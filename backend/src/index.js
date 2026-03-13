@@ -13,7 +13,11 @@ const app = express();
 app.use(helmet());
 app.use(cors({
   origin: process.env.NODE_ENV === 'production' 
-    ? ['https://votre-domaine.com']
+    // ❌ Avant
+    //? ['https://votre-domaine.com']
+
+    // ✅ Après
+    ? [process.env.FRONTEND_URL]
     : '*',
   credentials: true
 }));
